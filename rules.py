@@ -19,6 +19,7 @@ def avg(Q):
 def borda(Q):
     return (avg(Q) == np.max(avg(Q)))/sum(avg(Q)== np.max(avg(Q)))
 
+# majority rule 
 def maj(Q): 
     m = Q.shape[0]
     n = Q.shape[1]
@@ -30,6 +31,19 @@ def maj(Q):
             M[j]=0
     return M/np.sum(M)
 
+# Pareto rule
+def pareto(Q):
+    m = Q.shape[0]
+    n = Q.shape[1]
+    options = np.ones(n)
+    for j in range(n):
+        for s in np.delete(np.arange(n), j):
+            if (np.all((Q[:,j]>= Q[:,s]))==True) & (np.any((Q[:,j]> Q[:,s]))==True):
+                options[j]=0
+    pareto = options/np.sum(options) if np.any(options==1)==False else np.ones(n)/n
+    return pareto   
+
+# Intersection rule
 def intersect(Q):
     m = Q.shape[0]
     n = Q.shape[1]
@@ -44,9 +58,11 @@ def intersect(Q):
             break
     return options/sum(options)
 
+# average rule: probablity of every one obtained by desired outcome
 def happy_avg(Q):
     return np.sum(avg(Q) * np.prod(Q, axis=0))
 
+# borda rule: probablity of every one obtained by desired outcome
 def happy_borda(Q):
     return np.sum(borda(Q) *np.prod(Q, axis=0))
     
