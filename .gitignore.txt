@@ -55,3 +55,8 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Others
+.gitattributes
+.gitignore.txt
+.DS_Store
