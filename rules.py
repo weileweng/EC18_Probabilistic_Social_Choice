@@ -4,8 +4,6 @@
 # In[ ]:
 
 import numpy as np
-# setting
-Q = np.array([[0.6,0.4,0.],[0.6,0.4,0.],[0.,0.4,0.6]])
 
 # average rule 
 def avg(Q):
@@ -14,7 +12,11 @@ def avg(Q):
 
 # borda rule 
 def borda(Q):
-    return (avg(Q) == np.max(avg(Q)))/sum(avg(Q)== np.max(avg(Q)))
+    def borda(Q):
+    eps = 1e-10
+    return (abs(avg(Q) - np.max(avg(Q)))<eps)/sum(avg(Q)== np.max(avg(Q)))
+       
+print("Borda rule: {}".format(borda(Q)))
 
 # majority rule 
 def maj(Q): 
