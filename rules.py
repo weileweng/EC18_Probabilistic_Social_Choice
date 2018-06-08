@@ -4,9 +4,6 @@
 # In[ ]:
 
 import numpy as np
-from PIL import Image 
-import requests
-from io import BytesIO
 # setting
 Q = np.array([[0.6,0.4,0.],[0.6,0.4,0.],[0.,0.4,0.6]])
 

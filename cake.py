@@ -5,9 +5,9 @@
 
 import numpy as np
 from rules import avg
-from PIL import Image 
-import requests
-from io import BytesIO
+#from PIL import Image 
+#import requests
+#from io import BytesIO
 import matplotlib.pyplot as plt
 get_ipython().magic('matplotlib inline')
 
